@@ -5,7 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,10 @@ import tweteroo.api.dto.UserDTO;
 @Data
 @Entity
 @NoArgsConstructor
+@Table(
+    name = "Users",
+    uniqueConstraints = @UniqueConstraint(columnNames = "username")
+)
 public class User {
     public User(UserDTO dto) {
         this.username = dto.username();

@@ -19,8 +19,9 @@ public class UserService {
         return repository.findAll();
     }
 
-    public User create(@Valid UserDTO dto) {
-        return repository.save(new User(dto));
+    public String create(@Valid UserDTO dto) {
+        repository.save(new User(dto));
+        return "OK";
     }
 
     public void update(Long id, UserDTO dto) {

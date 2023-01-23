@@ -28,8 +28,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void create(@RequestBody UserDTO user) {
-        service.create(user);
+    public String create(@RequestBody UserDTO user) {
+        return service.create(user);
     }
 
     @PutMapping("/{id}") 
