@@ -1,5 +1,7 @@
 package tweteroo.api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,11 @@ public class TweetController {
     @GetMapping
     public Page<Tweet> findAllPage(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
         return service.listAll(page);
+    }
+
+    @GetMapping
+    public List<Tweet> findByUsername(@RequestParam(value = "username", required = true) String username) {
+        return service.listByUsername(username);
     }
     
     @PostMapping
